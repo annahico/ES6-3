@@ -37,14 +37,25 @@ console.log(users);
 //Modificar por ID
 let persona = {
     nombre: "Anna",
-    edad: "31",
+    edad: 31,
     email: "Anna@example.com",
 };
 
+let newData = {
+    nombre: "Carlos",
+    edad: 77,
+};
+
 persona = {
+    ...persona,
+    ...newData,
+    //Carlos
+    // 77
     
-}
+};
 
 
 console.log("\nUsuarios");
 console.log(users);
+
+console.log(persona);

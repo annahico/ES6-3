@@ -12,7 +12,7 @@ let users = [
         name: "User3",
     },
     {
-        id: 3,
+        id: 4,
         name: "User4",
     },
 ];
@@ -30,32 +30,39 @@ users.push({ id: ++id, name: "User5" });
 
 //Encontrar por ID (LEER)
 
-const user = users.find((user) => user.id === 3); //ID que quiero encontrar
+const user = users.find((user) => user.id === 4); //ID que quiero encontrar
 console.log("\nEncontrar por ID"); // |n es salto de linea
 console.log(users);
 
 //Modificar por ID
-let persona = {
-    nombre: "Anna",
-    edad: 31,
-    email: "Anna@example.com",
-};
+
+let index = 3;
 
 let newData = {
-    nombre: "Carlos",
-    edad: 77,
+    name: "Carlos",
 };
+users[index] = { ...users[index], ...newData };
 
-persona = {
-    ...persona,
-    ...newData,
-    //Carlos
-    // 77
-    
-};
+// let persona = {
+//     nombre: "Anna",
+//     edad: 31,
+//     email: "Anna@example.com",
+// };
+// let newData = {
+//     nombre: "Carlos",
+//     edad: 77,
+// };
+// persona = {
+//     ...persona,
+//     ...newData,
+//Carlos
+// 77
+// };
 
+//Borrar ID
+
+const user = users.find((user) => user.id === 4);
 
 console.log("\nUsuarios");
 console.log(users);
 
-console.log(persona);

@@ -26,6 +26,25 @@ console.log(users);
 let id = 4;
 users.push({ id: ++id, name: "User5" });
 
-console.log("Usuarios");
+
+
+//Encontrar por ID (LEER)
+
+const user = users.find((user) => user.id === 3); //ID que quiero encontrar
+console.log("\nEncontrar por ID"); // |n es salto de linea
 console.log(users);
 
+//Modificar por ID
+let persona = {
+    nombre: "Anna",
+    edad: "31",
+    email: "Anna@example.com",
+};
+
+persona = {
+    
+}
+
+
+console.log("\nUsuarios");
+console.log(users);

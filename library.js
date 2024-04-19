@@ -1,5 +1,5 @@
 //SIMULAR 
-
+let usersDataSource = [];
 class User {
     #id
     #name
@@ -59,18 +59,36 @@ class User {
         return data;
     }
 
-    static find(){
+    static find() {
         return users;
     }
 
-    static findById(id){
+    static findById(id) {
         return users.find((user) => user.id === id);
     }
 
-    static update(id, data){
+    static update(id, data) {
         let index = users.findIndex((user) => user.id === id);
         return users[index] = { ...users[index], ...newData };
     }
 
+    static delete(id) {
+        let index = users.findIndex((user) => user.id === id);
+        users.splice(index, 1);
+    }
 }
+
+// EJEMPLO DE USO
+const adminUser = User.create({
+    id: 1,
+    name: "Administrator",
+    email: "admin@ecample",
+    password: "admin123",
+    isActive: true,
+    roleId: 1,
+});
+
+const users = User.find();
+console.log(users);
+
 

@@ -88,6 +88,18 @@ const adminUser = User.create({
     roleId: 1,
 });
 
+const newUser = User.create({
+    id: 2,
+    name: "User2",
+    email: "user1@ecample",
+    password: "password123",
+    isActive: true,
+    roleId: 2,
+});
+
+
+
+
 const users = User.find();
 console.log(users);
 

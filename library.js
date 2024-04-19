@@ -71,7 +71,11 @@ class User {
 
     static update(id, data) {
         let index = usersDataSource.findIndex((user) => user.id === id);
-        return users[index] = { ...users[index], ...newData };
+        if (index !== -1) {
+            return users[index] = { ...usersDataSource[index], ...newData };
+        }else{
+            return null;
+        }
     }
 
     static delete(id) {
@@ -100,16 +104,28 @@ for (let i = 1; i < numberOfNewUsers; i++) {
     })
 };
 
-
 // const users = User.find();
 // console.log(users);    
 
 // const user = User.findById(4);
 // console.log(user);
 
-User.delete(4);
-const users = User.find();
-console.log(users); 
+// User.delete(4);
+// const users = User.find();
+// console.log(users); 
+
+const updatedUser = User.update(80, {
+    name: "Anna",
+    email: "anna@example.com",
+});
+
+console.log(updatedUser);
+
+// const user = User.findById(80);
+// console.log(user);
+
+// const users = User.find();
+// console.log(users);
 
 
 

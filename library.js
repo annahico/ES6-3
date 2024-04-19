@@ -62,5 +62,10 @@ class User {
     static find(){
         return users;
     }
+
+    static findById(id){
+        return user = users.find((user) => user.id === id);
+    }
+
 }
 

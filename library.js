@@ -73,14 +73,18 @@ class User {
         let index = usersDataSource.findIndex((user) => user.id === id);
         if (index !== -1) {
             return users[index] = { ...usersDataSource[index], ...newData };
-        }else{
+        } else {
             return null;
         }
     }
 
     static delete(id) {
         let index = usersDataSource.findIndex((user) => user.id === id);
-        users.splice(index, 1);
+        if (index !== -1) {
+            users.splice(index, 1);
+        } else {
+            return null;
+        }
     }
 }
 
@@ -110,14 +114,26 @@ for (let i = 1; i < numberOfNewUsers; i++) {
 // const user = User.findById(4);
 // console.log(user);
 
-// User.delete(4);
+const deleteResult = User.delete(400);
+if (deleteResult == true) {
+    console.log("Delete successful");
+} else {
+    console.log("Failed to delete");
+}
+
 // const users = User.find();
 // console.log(users); 
 
-const updatedUser = User.update(80, {
+const updatedUser = User.update(8, {
     name: "Anna",
     email: "anna@example.com",
 });
+
+if (updatedUser) {
+    console.log("Updated successfully");
+} else {
+    console.log("Failed to update");
+}
 
 console.log(updatedUser);
 

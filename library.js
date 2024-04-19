@@ -7,6 +7,7 @@ class User {
     #password
     #isActive
     #roleId
+    static idCounter = 1;
 
     get id() {
         return this.#id;
@@ -55,32 +56,32 @@ class User {
 
 
     static create(data) {
-        user.push(data);
+        const user = { id: User.idCounter++, ...data };
+        usersDataSource.push(data);
         return data;
     }
 
     static find() {
-        return users;
+        return usersDataSource;
     }
 
     static findById(id) {
-        return users.find((user) => user.id === id);
+        return usersDataSource.find((user) => user.id === id);
     }
 
     static update(id, data) {
-        let index = users.findIndex((user) => user.id === id);
+        let index = usersDataSource.findIndex((user) => user.id === id);
         return users[index] = { ...users[index], ...newData };
     }
 
     static delete(id) {
-        let index = users.findIndex((user) => user.id === id);
+        let index = usersDataSource.findIndex((user) => user.id === id);
         users.splice(index, 1);
     }
 }
 
 // EJEMPLO DE USO
 const adminUser = User.create({
-    id: 1,
     name: "Administrator",
     email: "admin@ecample",
     password: "admin123",
@@ -88,19 +89,28 @@ const adminUser = User.create({
     roleId: 1,
 });
 
-const newUser = User.create({
-    id: 2,
-    name: "User2",
-    email: "user1@ecample",
-    password: "password123",
-    isActive: true,
-    roleId: 2,
-});
+const numberOfNewUsers = 10
+for (let i = 1; i < numberOfNewUsers; i++) {
+    User.create({
+        name: `User${i + 1}`,
+        email: `user${i + 1}@example`,
+        password: "password123",
+        isActive: true,
+        roleId: 2,
+    })
+};
 
 
+// const users = User.find();
+// console.log(users);    
 
+// const user = User.findById(4);
+// console.log(user);
 
+User.delete(4);
 const users = User.find();
-console.log(users);
+console.log(users); 
+
+
 
 

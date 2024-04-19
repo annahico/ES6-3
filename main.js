@@ -23,10 +23,9 @@ console.log("Usuarios");
 console.log(users);
 
 //Crear
+
 let id = 4;
 users.push({ id: ++id, name: "User5" });
-
-
 
 //Encontrar por ID (LEER)
 
@@ -36,32 +35,17 @@ console.log(users);
 
 //Modificar por ID
 
-let index = 3;
-
+let index = users.findIndex((user) => user.id === 4);
 let newData = {
     name: "Carlos",
 };
 users[index] = { ...users[index], ...newData };
 
-// let persona = {
-//     nombre: "Anna",
-//     edad: 31,
-//     email: "Anna@example.com",
-// };
-// let newData = {
-//     nombre: "Carlos",
-//     edad: 77,
-// };
-// persona = {
-//     ...persona,
-//     ...newData,
-//Carlos
-// 77
-// };
-
 //Borrar ID
 
-const user = users.find((user) => user.id === 4);
+index = users.findIndex((user) => user.id === 2);
+users.splice(index, 1);
+
 
 console.log("\nUsuarios");
 console.log(users);
